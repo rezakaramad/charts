@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-apps
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: argocd-system
+
+  source:
+    repoURL: {{ .Values.apps.source.repoURL | quote }}
+    targetRevision: {{ .Values.apps.source.targetRevision | default "main" | quote }}
+    path: {{ .Values.apps.source.path }}
+    directory:
+      recurse: true
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      namespace: argocd
+      jsonPointers:
+        - /spec/syncPolicy/automated
+        - /spec/source/targetRevision
+    - group: ""
+      kind: ConfigMap
+      name: argocd-cm
+      namespace: argocd
+      jsonPointers:
+        - /data/url
+
+  syncPolicy:
+    syncOptions:
+    - RespectIgnoreDifferences=true

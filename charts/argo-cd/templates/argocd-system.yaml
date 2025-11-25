@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: argocd-system
+  namespace: argocd
+
+spec:
+  description: Syncs Argo CD whitelisted resources
+
+  destinations:
+  - namespace: 'argocd'
+    server: https://kubernetes.default.svc
+
+  namespaceResourceWhitelist:
+  - group: 'argoproj.io'
+    kind: 'AppProject'
+  - group: 'argoproj.io'
+    kind: 'Application'
+  - group: 'argoproj.io'
+    kind: 'ApplicationSet'
+
+  sourceRepos:
+    {{- range .Values.argocdSystem.sourceRepos }}
+    - {{ . | quote }}
+    {{- end }}

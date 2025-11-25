@@ -1,0 +1,21 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node / tooling (in case you lint/docs with JS)
+node_modules/
+
+# Helm build artifacts
+*.tgz          # packaged charts (helm package)
+Chart.lock     # lockfile from helm dependency build
+
+# Logs / temp
+*.log
+tmp/
+.cache/

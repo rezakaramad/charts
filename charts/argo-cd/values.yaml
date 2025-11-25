@@ -1,0 +1,7 @@
+argocd:
+  server:
+    metrics:
+      enabled: true
+
+  commitServer:
+    enabled: true
