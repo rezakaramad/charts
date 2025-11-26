@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: plt-applications
+  name: applications
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: plt-applications
+  project: applications
 
   source:
     repoURL: {{ .Values.platform.appsFolder.repoURL | quote }}
