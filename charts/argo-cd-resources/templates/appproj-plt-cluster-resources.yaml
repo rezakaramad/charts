@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: platform-infra
+  name: plt-cluster-resources
   namespace: argocd
 spec:
-  description: Project for platform-managed cluster infrastructure resources.
+  description: Project for platform-managed cluster resources.
 
   clusterResourceWhitelist:
   - group: '*'
