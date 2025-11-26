@@ -20,4 +20,4 @@ spec:
     kind: 'ApplicationSet'
 
   sourceRepos:
-    - {{ .Values.platform.source.repoURL | quote }}
+    - {{ .Values.platform.appsFolder.repoURL | quote }}
