@@ -5,3 +5,10 @@ argocd:
 
   commitServer:
     enabled: true
+
+platform:
+  appsFolder:
+    repoURL: ""
+    targetRevision: ""
+    path: ""
+  permittedRepos: []
