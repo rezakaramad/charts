@@ -1,4 +1,0 @@
-apiVersion: v2
-name: platform
-description: Deploys the core Argo CD resources.
-version: 0.0.7
