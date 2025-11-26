@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: root
+  project: argocd-root
 
   source:
     repoURL: {{ .Values.platform.source.repoURL | quote }}

@@ -1,4 +1,4 @@
 apiVersion: v2
 name: platform-gitops
 description: Deploys the core Argo CD resources.
-version: 0.0.3
+version: 0.0.4
