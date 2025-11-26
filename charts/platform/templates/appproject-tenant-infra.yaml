@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: plt-tenant-resources
+  name: tenant-infra
   namespace: argocd
 spec:
   description: Project for infrastructure resources provisioned for each tenant.
