@@ -9,9 +9,9 @@ spec:
   project: argocd-root
 
   source:
-    repoURL: {{ .Values.platform.source.repoURL | quote }}
-    targetRevision: {{ .Values.platform.source.targetRevision | default "main" | quote }}
-    path: {{ .Values.platform.source.path }}
+    repoURL: {{ .Values.platform.appsFolder.repoURL | quote }}
+    targetRevision: {{ .Values.platform.appsFolder.targetRevision | default "main" | quote }}
+    path: {{ .Values.platform.appsFolder.path }}
     directory:
       recurse: true
 

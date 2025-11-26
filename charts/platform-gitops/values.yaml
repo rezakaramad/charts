@@ -1,5 +1,6 @@
 platform:
-  source:
+  appsFolder:
     repoURL: ""
     targetRevision: ""
     path: ""
+  permittedRepos: []

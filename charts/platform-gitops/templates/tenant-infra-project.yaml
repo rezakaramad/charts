@@ -19,4 +19,6 @@ spec:
     kind: '*'
 
   sourceRepos:
-    - {{ .Values.platform.source.repoURL | quote }}
+  {{- range .Values.platform.permittedRepos }}
+    - {{ . | quote }}
+  {{- end }}
