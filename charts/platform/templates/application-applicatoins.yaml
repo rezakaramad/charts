@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-root
+  name: applicatoins
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: argocd-root
+  project: applicatoins
 
   source:
     repoURL: {{ .Values.platform.appsFolder.repoURL | quote }}
