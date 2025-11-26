@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-apps
+  name: root
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: argocd-system
+  project: root
 
   source:
-    repoURL: {{ .Values.apps.source.repoURL | quote }}
-    targetRevision: {{ .Values.apps.source.targetRevision | default "main" | quote }}
-    path: {{ .Values.apps.source.path }}
+    repoURL: {{ .Values.platform.source.repoURL | quote }}
+    targetRevision: {{ .Values.platform.source.targetRevision | default "main" | quote }}
+    path: {{ .Values.platform.source.path }}
     directory:
       recurse: true
 

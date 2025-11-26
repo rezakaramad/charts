@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: tenant-infra
+  namespace: argocd
+spec:
+  description: Project for infrastructure resources provisioned for each tenant.
+
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+
+  destinations:
+  - namespace: '*'
+    server: '*'
+
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+
+  sourceRepos:
+    - {{ .Values.platform.source.repoURL | quote }}
