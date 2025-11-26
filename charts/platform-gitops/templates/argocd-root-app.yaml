@@ -26,12 +26,6 @@ spec:
       jsonPointers:
         - /spec/syncPolicy/automated
         - /spec/source/targetRevision
-    - group: ""
-      kind: ConfigMap
-      name: argocd-cm
-      namespace: argocd
-      jsonPointers:
-        - /data/url
 
   syncPolicy:
     syncOptions:
