@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: argocd-system
+  name: argocd-root
   namespace: argocd
 
 spec:
-  description: Syncs Argo CD whitelisted resources
+  description: Project for Argo CD system resources managed by the root app-of-apps.
 
   destinations:
   - namespace: 'argocd'
@@ -20,6 +20,4 @@ spec:
     kind: 'ApplicationSet'
 
   sourceRepos:
-    {{- range .Values.argocdSystem.sourceRepos }}
-    - {{ . | quote }}
-    {{- end }}
+    - {{ .Values.platform.source.repoURL | quote }}

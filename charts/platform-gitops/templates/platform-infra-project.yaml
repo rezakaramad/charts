@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform-infra
+  namespace: argocd
+spec:
+  description: Project for platform-managed cluster infrastructure resources.
+
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+
+  destinations:
+  - namespace: '*'
+    server: '*'
+
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+
+  sourceRepos:
+    - {{ .Values.platform.source.repoURL | quote }}
