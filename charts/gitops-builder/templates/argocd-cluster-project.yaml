@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: {{ .Values.platform.clusterProject.name | quote }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  description: Project for resources provisioned for each cluster.
+  sourceRepos:
+  {{- range .Values.platform.clusterProject.sourceRepos }}
+  - {{ . | quote }}
+  {{- end }}  
+  destinations:
+  - namespace: '*'
+    server: '*'
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'

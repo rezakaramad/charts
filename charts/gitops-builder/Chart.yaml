@@ -1,0 +1,4 @@
+apiVersion: v2
+name: gitops-builder
+description: Deploys Argo CD resources for our internal developer platform.
+version: 0.0.1

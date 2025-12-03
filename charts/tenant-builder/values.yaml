@@ -1,0 +1,4 @@
+tenant:
+  name: ""
+  instance: ""
+  permittedRepos: []

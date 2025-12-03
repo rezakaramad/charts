@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: {{ .Values.platform.rootAppProject.name | quote }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  description: Project for Argo CD root application.
+  sourceRepos:
+  {{- range .Values.platform.rootAppProject.sourceRepos }}
+  - {{ . | quote }}
+  {{- end }}
+  destinations:
+  - server: https://kubernetes.default.svc
+    namespace: {{ .Release.Namespace | quote }}
+  namespaceResourceWhitelist:
+  - group: argoproj.io
+    kind: AppProject
+  - group: argoproj.io
+    kind: Application
+  - group: argoproj.io
+    kind: ApplicationSet

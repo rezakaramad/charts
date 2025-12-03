@@ -1,0 +1,16 @@
+{{- if .Values.platform.argocd.server.backendTLSPolicy.enabled -}}
+apiVersion: gateway.networking.k8s.io/v1
+kind: BackendTLSPolicy
+metadata:
+  name: {{ .Release.Name | quote }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  targetRefs:
+    {{- with .Values.platform.argocd.server.backendTLSPolicy.targetRefs }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- with .Values.platform.argocd.server.backendTLSPolicy.validation }}
+  validation:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+{{- end }}
