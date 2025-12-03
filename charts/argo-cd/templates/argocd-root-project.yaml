@@ -1,3 +1,4 @@
+{{- if .Capabilities.APIVersions.Has "argoproj.io/v1alpha1/AppProject" }}
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
@@ -5,7 +6,10 @@ metadata:
   namespace: {{ .Release.Namespace | quote }}
 spec:
   description: Project for Argo CD root application.
-  destinations:
+  sourceRepos:
+  {{- range .Values.platform.rootAppProject.sourceRepos }}
+  - {{ . | quote }}
+  {{- end }}  destinations:
   - server: https://kubernetes.default.svc
     namespace: {{ .Release.Namespace | quote }}
   namespaceResourceWhitelist:
@@ -15,5 +19,4 @@ spec:
     kind: Application
   - group: argoproj.io
     kind: ApplicationSet
-  sourceRepos:
-    - {{ .Values.platform.rootApp.repoURL | quote }}
+{{- end }}

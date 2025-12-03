@@ -1,3 +1,4 @@
+{{- if .Capabilities.APIVersions.Has "argoproj.io/v1alpha1/AppProject" }}
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
@@ -6,8 +7,8 @@ metadata:
 spec:
   description: Project for namespace-scoped resources provisioned for each tenant.
   sourceRepos:
-  {{- range .Values.platform.repos }}
-    - {{ . | quote }}
+  {{- range .Values.platform.tenantProject.sourceRepos }}
+  - {{ . | quote }}
   {{- end }}
   destinations:
   - namespace: '*'
@@ -15,3 +16,4 @@ spec:
   namespaceResourceWhitelist:
   - group: '*'
     kind: '*'
+{{- end }}
