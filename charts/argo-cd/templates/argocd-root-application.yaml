@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.platform.rootApp.name | quote }}
+  namespace: {{ .Release.Namespace | quote }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.platform.rootAppProject.name | quote }}
+  source:
+    repoURL: {{ .Values.platform.rootApp.repoURL | quote }}
+    targetRevision: {{ .Values.platform.rootApp.targetRevision | default "main" | quote }}
+    path: {{ .Values.platform.rootApp.path | quote }}
+    directory:
+      recurse: true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: {{ .Release.Namespace | quote }}
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      jsonPointers:
+        - /spec/syncPolicy/automated
+        - /spec/source/targetRevision
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - RespectIgnoreDifferences=true
