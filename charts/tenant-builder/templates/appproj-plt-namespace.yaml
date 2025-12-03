@@ -39,8 +39,8 @@ spec:
       kind: "Deployment"
     - group: "apps"
       kind: "ReplicaSet"
-    - group: "networking.k8s.io"
-      kind: "Ingress"
+    - group: "apps"
+      kind: "StatefulSet"
     - group: "networking.k8s.io"
       kind: "NetworkPolicy"
     - group: "rbac.authorization.k8s.io"
@@ -55,6 +55,6 @@ spec:
       kind: "PodDisruptionBudget"
 
   sourceRepos:
-  {{- range .Values.tenant.permittedRepos }}
+  {{- range .Values.tenant.repos }}
     - {{ . | quote }}
   {{- end }}

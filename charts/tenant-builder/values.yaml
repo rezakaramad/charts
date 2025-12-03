@@ -1,4 +1,4 @@
 tenant:
   name: ""
   instance: ""
-  permittedRepos: []
+  repos: []
