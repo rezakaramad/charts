@@ -19,8 +19,7 @@ platform:
   tenantProject:
     name: plt-tenant-builder
     sourceRepos:
-      - https://github.com/rezakaramad/argocd-feature-branches
-      - https://github.com/rezakaramad/charts 
+      - "https://github.com/rezakaramad/*"
   # -- Used by Application / ApplicationSet that deploys cluster resources
   clusterProject:
     name: plt-cluster-builder
