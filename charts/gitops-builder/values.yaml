@@ -1,23 +1,23 @@
 platform:
   rootApp:
-    name: plt-root-application
+    name: root
     repoURL: https://github.com/rezakaramad/argocd-feature-branches
     targetRevision: main
     path: k8s/
   # -- Scopes and restricts what the root Application is allowed to manage
   rootAppProject:
-    name: plt-root-application
+    name: gitops-system
     sourceRepos:
       - https://github.com/rezakaramad/argocd-feature-branches
       - https://github.com/rezakaramad/charts
   # -- Used by Application / ApplicationSet that deploys namespace-scoped resources for each tenant
   tenantProject:
-    name: plt-tenant
+    name: tenant-system
     sourceRepos:
       - "https://github.com/rezakaramad/*"
   # -- Used by Application / ApplicationSet that deploys cluster resources
   clusterProject:
-    name: plt-cluster
+    name: platform-system
     sourceRepos:
       - https://github.com/rezakaramad/argocd-feature-branches
       - https://github.com/rezakaramad/charts
