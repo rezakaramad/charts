@@ -1,7 +1,7 @@
 apiVersion: v2
 name: argo-cd
 description: Deploys Argo CD.
-version: 1.0.9
+version: 1.0.10
 dependencies:
   - name: argo-cd
     alias: argocd

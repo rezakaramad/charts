@@ -9,7 +9,8 @@ spec:
   sourceRepos:
   {{- range .Values.platform.clusterProject.sourceRepos }}
   - {{ . | quote }}
-  {{- end }}  destinations:
+  {{- end }}  
+  destinations:
   - namespace: '*'
     server: '*'
   clusterResourceWhitelist:
