@@ -1,4 +1,0 @@
-apiVersion: v2
-name: argo-cd-resources
-description: Deploys namespace-scoped resources for a tenant.
-version: 0.0.1
